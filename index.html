@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Dog Wine × PAWS Campaign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1b2141;
+      --gold: #c9a84c;
+      --cream: #f5f0e8;
+      --burgundy: #8e2d5e;
+      --rose: #c44569;
+      --text-dark: #2a2a2a;
+      --text-gray: #7a7a7a;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: #e8e3db;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    nav .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav .nav-logo .gold { color: var(--gold); }
+    nav .nav-logo .white { color: var(--white); }
+    nav .nav-logo .dim { color: rgba(255,255,255,0.45); font-weight: 400; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--gold);
+    }
+    nav ul li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 16px; right: 16px;
+      height: 2px;
+      background: var(--gold);
+    }
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      nav ul { gap: 0; }
+      nav ul li a { padding: 8px 8px; font-size: 0.65rem; letter-spacing: 1px; }
+    }
+    @media (max-width: 600px) {
+      nav ul li a span.nav-full { display: none; }
+      nav ul li a span.nav-short { display: inline; }
+    }
+    @media (min-width: 601px) {
+      nav ul li a span.nav-short { display: none; }
+    }
+
+    /* ── SLIDE WRAPPER ── */
+    .slide {
+      background: var(--cream);
+      position: relative;
+      padding: 60px 80px 0 80px;
+      margin-bottom: 24px;
+      scroll-margin-top: 56px;
+    }
+    .slide-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Gold top border on all slides except hero */
+    .slide.has-top-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    /* Navy bottom bar */
+    .slide-footer {
+      background: var(--navy);
+      padding: 16px 80px;
+      margin-top: auto;
+      margin-left: -80px;
+      margin-right: -80px;
+    }
+    .slide-footer p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 0.85rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slide-footer .footer-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    h2.slide-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .body-text {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text-gray);
+      max-width: 900px;
+    }
+
+    /* ── SLIDE 1: HERO ── */
+    .hero-slide {
+      padding: 0;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+    .hero-slide .slide-content {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 60px 80px;
+    }
+    .hero-text {
+      padding-left: 20px;
+      border-left: 4px solid var(--gold);
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: var(--navy);
+      letter-spacing: 6px;
+      line-height: 1.05;
+    }
+    .hero-text .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.7rem;
+      margin-top: 4px;
+    }
+    .hero-text .desc {
+      font-size: 0.88rem;
+      color: var(--text-gray);
+      margin-top: 12px;
+    }
+    .hero-visual {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      position: relative;
+      overflow: visible;
+      margin-bottom: -60px;
+    }
+    .hero-visual img.dog-img {
+      max-height: 560px;
+      object-fit: contain;
+      margin-bottom: -45px;
+      margin-right: -20px;
+    }
+    .hero-paw {
+      position: absolute;
+      opacity: 0.1;
+    }
+    .hero-paw img { width: 50px; }
+    .hero-paw.p1 { bottom: 60px; left: -40px; }
+    .hero-paw.p2 { top: 10px; right: 60px; }
+    .hero-paw.p3 { top: 60px; left: 20px; }
+    .hero-paw.p4 { bottom: 160px; right: 10px; }
+    .hero-paw.p5 { top: -10px; left: -60px; }
+    .hero-paw.p6 { bottom: 30px; right: 180px; }
+
+    .hero-footer {
+      background: var(--navy);
+      padding: 14px 80px;
+      border-top: 3px solid var(--gold);
+    }
+    .hero-footer p {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-footer p span.gold { color: var(--gold); font-weight: 700; }
+    .hero-footer p span.white { color: var(--white); font-weight: 600; }
+
+    /* ── SLIDE 2: CONCEPT ── */
+    .concept-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+      margin-bottom: 40px;
+    }
+    .concept-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 28px 24px;
+      border-left: 4px solid var(--gold);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .concept-card .card-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+    .concept-card .card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .concept-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .concept-card p {
+      font-size: 0.82rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* gold icon SVGs inline */
+    .icon-dog, .icon-wine, .icon-heart, .icon-phone, .icon-chat, .icon-paw,
+    .icon-globe, .icon-robot, .icon-people, .icon-chart, .icon-camera, .icon-megaphone, .icon-instagram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+
+    /* ── SLIDE 3: LINK IN BIO ── */
+    .link-bio-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .check-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .check-list .check-icon {
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .link-bio-img {
+      display: flex;
+      justify-content: center;
+    }
+    .link-bio-img img {
+      max-height: 480px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      transition: transform 0.3s;
+    }
+    .bio-link-wrapper {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .bio-link-wrapper:hover img {
+      transform: scale(1.02);
+    }
+    .try-bot-badge {
+      display: block;
+      margin-bottom: 14px;
+      text-align: center;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .bio-link-wrapper:hover .try-bot-badge {
+      background: var(--navy);
+    }
+
+    /* ── SLIDE 4: HOW IT WORKS ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 36px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .step-card {
+      background: var(--white);
+      text-align: center;
+      position: relative;
+      border-radius: 8px;
+    }
+    .step-icon-box {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 8px 8px 0 0;
+    }
+    .step-card:nth-child(1) .step-icon-box { background: #1b2141; }
+    .step-card:nth-child(2) .step-icon-box { background: #8e2d5e; }
+    .step-card:nth-child(3) .step-icon-box { background: #c9a84c; }
+    .step-card:nth-child(4) .step-icon-box { background: #c44569; }
+    .step-icon-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+    .step-body {
+      padding: 20px 18px 28px;
+    }
+    .step-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .step-body p {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      line-height: 1.55;
+    }
+    .step-arrow {
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 2rem;
+      font-weight: 900;
+      z-index: 10;
+      text-shadow: 0 0 4px rgba(0,0,0,0.2);
+    }
+
+    /* ── SLIDE 5: PAWS ── */
+    .paws-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .paw-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .paw-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+    .paw-list li img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .paws-image-container {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .paws-image-container img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    /* ── SLIDE 6: SOCIAL MEDIA ── */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 32px;
+      margin-bottom: 36px;
+    }
+    .option-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .option-header {
+      padding: 18px 24px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .option-header img { height: 20px; filter: brightness(0) invert(1); }
+    .option-card:first-child .option-header { background: var(--navy); }
+    .option-card:last-child .option-header { background: var(--burgundy); }
+    .option-body {
+      padding: 24px;
+    }
+    .option-body > p {
+      font-size: 0.82rem;
+      color: var(--text-gray);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .option-body .check-list { margin-top: 0; gap: 8px; }
+    .option-body .check-list li { font-size: 0.82rem; }
+
+    /* ── SLIDE 7: WEBSITE CHAT ── */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .feat-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .feat-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .feat-icon-box {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feat-icon-box img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .feat-list li .feat-text h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .feat-list li .feat-text p {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+    .website-mockup-img {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .website-mockup-img img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── SLIDE 8: DRINK AGENTS ── */
+    .da-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+      margin-bottom: 36px;
+    }
+    .da-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .da-icon-box {
+      background: #f5b731;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .da-icon-box svg { width: 48px; height: 48px; fill: var(--white); }
+    .da-icon-box img { width: 56px; height: 56px; object-fit: contain; border-radius: 6px; }
+    .da-card-body {
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .da-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .da-card-body p {
+      font-size: 0.82rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* ── SLIDE 9: DRINK AGENTS SCREENSHOT ── */
+    .da-screenshot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .da-screenshot img {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+    .da-screenshot a:hover img {
+      transform: scale(1.01);
+    }
+
+    /* ── SLIDE 10: PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 32px;
+      margin-bottom: 36px;
+    }
+    .pricing-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card-header {
+      background: var(--gold);
+      padding: 0;
+      height: 6px;
+    }
+    .pricing-card-header h3 {
+      display: none;
+    }
+    .pricing-card-body {
+      padding: 32px 28px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .pricing-card-body .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .pricing-card-body .price-main {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .pricing-card-body .price-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .pricing-card-body .price-detail {
+      font-size: 0.82rem;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin: 12px 0 20px;
+    }
+    .pricing-card-body .price-detail strong {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+    .pricing-card-body .price-label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pricing-features.two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-dark);
+    }
+    .pricing-features li .check-icon { color: var(--gold); font-size: 1rem; }
+
+    .pricing-example-link {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+    }
+    .pricing-example-link:hover { background: var(--navy); }
+
+    .pricing-divider {
+      display: none;
+    }
+    .pricing-card-body .pricing-btn-area {
+      margin-top: auto;
+      padding-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ── SLIDE 11: VIDEO ── */
+    .video-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+    .video-pricing-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-pricing-card .card-top {
+      background: var(--gold);
+      height: 6px;
+    }
+    .video-pricing-card .card-inner {
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .video-pricing-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .video-pricing-card .price-main {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin: 12px 0 16px;
+    }
+    .video-images {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .video-img-row {
+      position: relative;
+    }
+    .video-img-row img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .hours-badge {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--white);
+      padding: 10px 16px;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .hours-badge strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: var(--navy);
+      display: block;
+    }
+    .hours-badge span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    /* ── SLIDE 12: CTA ── */
+    .cta-slide {
+      text-align: center;
+      position: relative;
+    }
+    .cta-slide .slide-content {
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 40px;
+    }
+    .cta-slide h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 3.5rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .cta-slide .cta-body {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.75;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .cta-divider {
+      width: 250px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+    }
+    .cta-links {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      letter-spacing: 1px;
+    }
+    .cta-paw {
+      position: absolute;
+      opacity: 0.08;
+    }
+    .cta-paw img { width: 60px; }
+    .cta-paw.p1 { top: 60px; left: 80px; }
+    .cta-paw.p2 { top: 40px; right: 200px; }
+    .cta-paw.p3 { bottom: 80px; right: 80px; }
+    .cta-paw.p4 { top: 100px; right: 80px; transform: rotate(15deg); }
+
+    /* ── RESPONSIVE ── */
+    /* ── TABLET ── */
+    @media (max-width: 900px) {
+      .slide { padding: 40px 30px 0; }
+      .slide-footer { padding: 14px 30px; margin-left: -30px; margin-right: -30px; }
+      .hero-slide .slide-content { grid-template-columns: 1fr; padding: 40px 30px; }
+      .hero-visual { display: none; }
+      .hero-text h1 { font-size: 2.8rem; }
+      .hero-footer { padding: 14px 30px; }
+      .concept-cards { grid-template-columns: 1fr; }
+      .link-bio-layout { grid-template-columns: 1fr; gap: 30px; }
+      .link-bio-img img { max-height: 400px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .step-arrow { display: none; }
+      .paws-layout { grid-template-columns: 1fr; }
+      .options-grid { grid-template-columns: 1fr; }
+      .chat-layout { grid-template-columns: 1fr; }
+      .da-cards { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-features.two-col { grid-template-columns: 1fr; }
+      .video-layout { grid-template-columns: 1fr; }
+      h2.slide-title { font-size: 2rem; }
+      .slide-content { min-height: auto; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav .nav-logo { display: none; }
+      nav { justify-content: center; }
+      nav ul { gap: 0; }
+      .slide { padding: 28px 18px 0; margin-bottom: 12px; }
+      .slide-footer { padding: 12px 18px; margin-left: -18px; margin-right: -18px; }
+      .slide-footer p { font-size: 0.75rem; }
+      .slide-content { min-height: auto; }
+
+      /* Hero */
+      .hero-slide { margin-top: 0; }
+      .hero-slide .slide-content { padding: 30px 18px; }
+      .hero-text h1 { font-size: 2rem; letter-spacing: 3px; }
+      .hero-text .subtitle { font-size: 1.2rem; }
+      .hero-text .desc { font-size: 0.82rem; }
+      .hero-footer { padding: 12px 18px; }
+      .hero-footer p { font-size: 0.6rem; letter-spacing: 2px; }
+
+      /* Titles & body */
+      h2.slide-title { font-size: 1.6rem; margin-bottom: 14px; }
+      .section-label { font-size: 0.6rem; letter-spacing: 3px; }
+      .body-text { font-size: 0.84rem; line-height: 1.65; }
+
+      /* Concept cards */
+      .concept-cards { gap: 14px; margin-top: 20px; margin-bottom: 24px; }
+      .concept-card { padding: 20px 16px; gap: 12px; }
+
+      /* Link in bio */
+      .link-bio-layout { gap: 20px; }
+      .link-bio-img img { max-height: 340px; }
+      .try-bot-badge { font-size: 0.85rem; padding: 12px 20px; }
+      .check-list li { font-size: 0.82rem; }
+
+      /* How it works */
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; margin-bottom: 24px; }
+      .step-icon-box { height: 80px; }
+      .step-icon-img { width: 40px; height: 40px; }
+      .step-body { padding: 14px 12px 18px; }
+      .step-body h3 { font-size: 0.82rem; }
+      .step-body p { font-size: 0.72rem; }
+
+      /* PAWS */
+      .paws-layout { gap: 20px; }
+
+      /* Options / channels */
+      .options-grid { gap: 14px; }
+
+      /* Chat layout */
+      .chat-layout { gap: 20px; }
+
+      /* DA cards */
+      .da-cards { gap: 14px; }
+      .da-icon-box img { width: 44px; height: 44px; }
+
+      /* DA screenshot */
+      .da-screenshot img { border-radius: 6px; }
+
+      /* Pricing */
+      .pricing-grid { gap: 18px; margin-top: 20px; margin-bottom: 24px; }
+      .pricing-card-body { padding: 24px 18px; }
+      .pricing-card-body .card-title { font-size: 1.1rem; }
+      .pricing-card-body .price-main { font-size: 1.1rem; }
+      .pricing-card-body .price-sub { font-size: 1.1rem; }
+      .pricing-card-body .price-detail { font-size: 0.78rem; }
+      .pricing-example-link { font-size: 0.78rem; padding: 9px 16px; }
+
+      /* Video layout */
+      .video-layout { gap: 20px; }
+      .video-pricing-card h3 { font-size: 1rem; }
+      .video-pricing-card .price-main { font-size: 1.4rem; }
+
+      /* CTA */
+      .cta-slide h2 { font-size: 1.8rem !important; }
+      .cta-body { font-size: 0.84rem !important; }
+      .cta-links { font-size: 0.8rem !important; }
+      .cta-emails a { font-size: 0.85rem; }
+      .cta-paw img { width: 30px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <span class="gold">BAR DOG WINE</span>
+    </div>
+    <ul>
+      <li><a href="#concept"><span class="nav-full">Concept</span><span class="nav-short">Concept</span></a></li>
+      <li><a href="#link-bio"><span class="nav-full">Experience</span><span class="nav-short">Exp.</span></a></li>
+      <li><a href="#paws"><span class="nav-full">PAWS</span><span class="nav-short">PAWS</span></a></li>
+      <li><a href="#channels"><span class="nav-full">Channels</span><span class="nav-short">Ch.</span></a></li>
+      <li><a href="#pricing"><span class="nav-full">Pricing</span><span class="nav-short">Price</span></a></li>
+      <li><a href="#contact"><span class="nav-full">Contact</span><span class="nav-short">CTA</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════ SLIDE 1: HERO ═══════ -->
+  <div class="slide hero-slide" id="hero">
+    <div class="slide-content">
+      <div class="hero-text">
+        <h1>PAWS CAMPAIGN</h1>
+        <p class="subtitle">Bringing Bar Dog to Life</p>
+        <p class="desc">An AI-Powered Interactive Campaign</p>
+      </div>
+      <div class="hero-visual">
+        <img class="dog-img" src="images/dog-mascot.png" alt="Bar Dog Mascot">
+        <div class="hero-paw p1"><img src="images/image-1-1-8.png" alt=""></div>
+        <div class="hero-paw p2"><img src="images/image-5-1-23.png" alt=""></div>
+        <div class="hero-paw p3"><img src="images/image-5-1-23.png" alt=""></div>
+        <div class="hero-paw p4"><img src="images/image-1-1-8.png" alt=""></div>
+        <div class="hero-paw p5"><img src="images/image-5-1-23.png" alt=""></div>
+        <div class="hero-paw p6"><img src="images/image-1-1-8.png" alt=""></div>
+      </div>
+    </div>
+    <div class="hero-footer">
+      <p><span class="gold">BAR DOG WINE</span> <span class="white">&times; FIG1.AI AND DRINK AGENTS</span></p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 2: THE CONCEPT ═══════ -->
+  <div class="slide has-top-bar" id="concept">
+    <div class="slide-content">
+      <div class="section-label">THE CONCEPT</div>
+      <h2 class="slide-title">Meet Your Dog Sommelier</h2>
+      <p class="body-text">We bring Bar Dog's mascot to life as an AI-powered personal sommelier. Through interactive video and conversation, Bar Dog introduces the brand, guides users through a personalized wine discovery journey, and matches them with their perfect Bar Dog wine — all based on their unique dog personality. This cohesive campaign drives engagement, wine sales, and donations to PAWS Chicago across social, web, and in-store touch points.</p>
+
+      <div class="concept-cards">
+        <div class="concept-card">
+          <div class="card-icon"><img src="images/icon-dog.png" alt="Dog"></div>
+          <div>
+            <h3>Bar Dog Comes Alive</h3>
+            <p>AI-generated video brings the mascot to life — walking, talking, and guiding users</p>
+          </div>
+        </div>
+        <div class="concept-card">
+          <div class="card-icon"><img src="images/icon-wine.png" alt="Wine"></div>
+          <div>
+            <h3>Wine Personality Match</h3>
+            <p>Users take a fun survey and get matched to their perfect Bar Dog wine</p>
+          </div>
+        </div>
+        <div class="concept-card">
+          <div class="card-icon"><img src="images/icon-heart.png" alt="Heart"></div>
+          <div>
+            <h3>PAWS Initiative</h3>
+            <p>Campaign drives awareness and donations for PAWS Chicago rescue dogs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>Bar Dog becomes your personal sommelier — matching you with your perfect wine based on your dog personality.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 3: LINK IN BIO ═══════ -->
+  <div class="slide has-top-bar" id="link-bio">
+    <div class="slide-content">
+      <div class="link-bio-layout">
+        <div>
+          <h2 class="slide-title">Link In Bio Experience</h2>
+          <p class="body-text">The campaign starts with a branded Link In Bio landing page hosted by the Bar Dog mascot. This interactive experience brings Bar Dog to life through AI-generated video — he introduces the brand, guides users through options, and creates an engaging, conversational journey.</p>
+          <ul class="check-list">
+            <li><span class="check-icon">&#10004;</span> Brand introduction through AI-generated Bar Dog video</li>
+            <li><span class="check-icon">&#10004;</span> Interactive wine personality survey</li>
+            <li><span class="check-icon">&#10004;</span> Direct chat with Bar Dog about wines & initiatives</li>
+            <li><span class="check-icon">&#10004;</span> PAWS Campaign featured with donation CTAs</li>
+            <li><span class="check-icon">&#10004;</span> Retail distribution & promotion information</li>
+            <li><span class="check-icon">&#10004;</span> Personalized wine recommendations</li>
+          </ul>
+        </div>
+        <div class="link-bio-img">
+          <a href="https://link.fig1.ai/bardog2" target="_blank" class="bio-link-wrapper">
+            <span class="try-bot-badge">Click to Try the Bot &rarr;</span>
+            <img src="images/link-in-bio-mockup.png" alt="Link In Bio Experience">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p><span class="footer-icon">&#128279;</span> Live Experience: link.fig1.ai/bardog2</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 4: HOW IT WORKS ═══════ -->
+  <div class="slide has-top-bar" id="experience">
+    <div class="slide-content">
+      <div class="section-label">THE EXPERIENCE</div>
+      <h2 class="slide-title">How It Works</h2>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon-box"><img src="images/icon-phone.png" alt="Phone" class="step-icon-img"></div>
+          <div class="step-body">
+            <h3>1. User Clicks<br>Link In Bio</h3>
+            <p>Bar Dog mascot greets them with an AI video</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon-box"><img src="images/icon-chat.png" alt="Chat" class="step-icon-img"></div>
+          <div class="step-body">
+            <h3>2. Interactive<br>Conversation</h3>
+            <p>Explore wines, promotions, retail locations & more</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon-box"><img src="images/icon-paw.png" alt="Paw" class="step-icon-img"></div>
+          <div class="step-body">
+            <h3>3. Take the<br>PAWS Survey</h3>
+            <p>Fun personality quiz matches your dog type to a wine</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon-box"><img src="images/icon-wine2.png" alt="Wine" class="step-icon-img"></div>
+          <div class="step-body">
+            <h3>4. Get Your<br>Wine Match</h3>
+            <p>Personalized Bar Dog wine recommendation with purchase link</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>Every step of the journey is conversational, personalized, and on-brand.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 5: PAWS INITIATIVE ═══════ -->
+  <div class="slide has-top-bar" id="paws">
+    <div class="slide-content">
+      <div class="paws-layout">
+        <div>
+          <div class="section-label">THE PAWS INITIATIVE</div>
+          <h2 class="slide-title">Wine for Humans,<br>Love for Dogs.</h2>
+          <p class="body-text">The PAWS initiative is at the heart of this campaign. Bar Dog has long been a champion for rescue dogs, and this experience brings that mission to the forefront. Through the interactive Bar Dog agent, users learn about PAWS Chicago, are encouraged to donate, and can purchase Bar Dog wines that support the cause.</p>
+          <ul class="paw-list">
+            <li><img src="images/image-5-1-23.png" alt=""> PAWS campaign featured prominently in the Link In Bio experience</li>
+            <li><img src="images/image-5-1-23.png" alt=""> Bar Dog guides users to learn about adoptable dogs</li>
+            <li><img src="images/image-5-1-23.png" alt=""> Direct purchase-to-donate flow within the conversation</li>
+            <li><img src="images/image-5-1-23.png" alt=""> Campaign content drives traffic to PAWS Chicago</li>
+          </ul>
+        </div>
+        <div class="paws-image-container">
+          <video src="images/paws-video.mp4" autoplay loop muted playsinline controls style="width:100%;border-radius:4px;"></video>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>Branded partnership with PAWS Chicago — driving awareness, adoption, and donations.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 6: SOCIAL MEDIA ═══════ -->
+  <div class="slide has-top-bar" id="channels">
+    <div class="slide-content">
+      <h2 class="slide-title">Social Media Promotion</h2>
+      <p class="body-text">Leverage the AI-generated Bar Dog videos across social platforms to promote the PAWS campaign. Videos already created for the experience can be trimmed and optimized for social, or new custom videos can be produced specifically for social distribution.</p>
+
+      <div class="options-grid">
+        <div class="option-card">
+          <div class="option-header">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="white" stroke-width="1.5"/><circle cx="8" cy="10" r="2" fill="white"/></svg>
+            Option A: Repurpose Existing Videos
+          </div>
+          <div class="option-body">
+            <p>Trim and optimize the AI-generated Bar Dog videos already created for the Link In Bio experience. Quick turnaround, no additional production needed.</p>
+            <ul class="check-list">
+              <li><span class="check-icon">&#10004;</span> Trim to platform-optimal lengths</li>
+              <li><span class="check-icon">&#10004;</span> Add social-native captions & CTAs</li>
+              <li><span class="check-icon">&#10004;</span> Consistent with existing experience</li>
+            </ul>
+          </div>
+        </div>
+        <div class="option-card">
+          <div class="option-header">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 12l6-8v6h6l-6 8v-6H4z" fill="white"/></svg>
+            Option B: New Custom Videos
+          </div>
+          <div class="option-body">
+            <p>Create brand-new AI-generated videos with Bar Dog specifically designed for social media — tailored messaging for the PAWS campaign.</p>
+            <ul class="check-list">
+              <li><span class="check-icon">&#10004;</span> Campaign-specific messaging</li>
+              <li><span class="check-icon">&#10004;</span> Platform-native formats (Reels, Stories)</li>
+              <li><span class="check-icon">&#10004;</span> Fresh creative for maximum impact</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p><span class="footer-icon">&#9679;</span> Proposed: Post as branded partnership with PAWS Chicago's Instagram</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 7: WEBSITE CHAT ═══════ -->
+  <div class="slide has-top-bar" id="website-chat">
+    <div class="slide-content">
+      <h2 class="slide-title">Website Chat Integration</h2>
+      <p class="body-text" style="margin-bottom: 8px;">A branded AI chatbot lives on the website, giving visitors an interactive way to explore wines, learn about the PAWS initiative, and get personalized recommendations — all without leaving the site.</p>
+
+      <div class="chat-layout">
+        <div>
+          <ul class="feat-list">
+            <li>
+              <div class="feat-icon-box"><img src="images/image-5-1-23.png" alt="" style="width:32px;height:32px;"></div>
+              <div class="feat-text">
+                <h4>Conversational AI chat widget embedded on bardogwine.com</h4>
+              </div>
+            </li>
+            <li>
+              <div class="feat-icon-box"><img src="images/image-5-1-23.png" alt="" style="width:32px;height:32px;"></div>
+              <div class="feat-text">
+                <h4>Same Bar Dog personality and brand voice as the Link In Bio</h4>
+              </div>
+            </li>
+            <li>
+              <div class="feat-icon-box"><img src="images/image-5-1-23.png" alt="" style="width:32px;height:32px;"></div>
+              <div class="feat-text">
+                <h4>Wine discovery, recommendations, and PAWS campaign integration</h4>
+              </div>
+            </li>
+            <li>
+              <div class="feat-icon-box"><img src="images/image-5-1-23.png" alt="" style="width:32px;height:32px;"></div>
+              <div class="feat-text">
+                <h4>24/7 availability — Bar Dog never sleeps</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="website-mockup-img">
+          <img src="images/website-mockup.png" alt="Bar Dog Website with Chat">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p><span class="footer-icon">&#127760;</span> Same experience, always on — embedded directly on bardogwine.com</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 8: DRINK AGENTS ═══════ -->
+  <div class="slide has-top-bar">
+    <div class="slide-content">
+      <h2 class="slide-title">Drink Agents Distribution</h2>
+      <p class="body-text">Expand the Bar Dog experience beyond owned channels by hosting it on Drink Agents — a discovery platform where consumers find their perfect drink across wine, beer, spirits, and more. This creates an always-on presence that reaches new audiences.</p>
+
+      <div class="da-cards">
+        <div class="da-card">
+          <div class="da-icon-box"><img src="images/da-icon1.png" alt="Robot"></div>
+          <div class="da-card-body">
+            <h3>Same Bar Dog Agent</h3>
+            <p>The same AI-powered sommelier experience — guiding wine discovery and featuring the PAWS campaign.</p>
+          </div>
+        </div>
+        <div class="da-card">
+          <div class="da-icon-box"><img src="images/da-icon2.png" alt="People"></div>
+          <div class="da-card-body">
+            <h3>Organic Discovery</h3>
+            <p>Drink Agents visitors can organically discover Bar Dog. Fig1 promotes Bar Dog on our socials as well.</p>
+          </div>
+        </div>
+        <div class="da-card">
+          <div class="da-icon-box"><img src="images/da-icon3.png" alt="Chart"></div>
+          <div class="da-card-body">
+            <h3>Drive Traffic Via Ads & In-Store</h3>
+            <p>Use paid ads and in-store QR codes to drive consumers directly to the Bar Dog Drink Agents page.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>drinkagents.com — Extend your reach to new wine consumers</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 9: DRINK AGENTS SCREENSHOT ═══════ -->
+  <div class="slide has-top-bar">
+    <div class="slide-content" style="justify-content: flex-start; padding-top: 20px;">
+      <h2 class="slide-title">Drink Agents Distribution</h2>
+      <div class="da-screenshot">
+        <a href="https://drinkagents.com/experience/bar-dog" target="_blank" class="bio-link-wrapper">
+          <span class="try-bot-badge">View Live Experience &rarr;</span>
+          <img src="images/da-page-screenshot.png" alt="Bar Dog on Drink Agents" style="max-width:100%;border-radius:8px;display:block;">
+        </a>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>drinkagents.com — Extend your reach to new wine consumers</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 10: PRICING ═══════ -->
+  <div class="slide" id="pricing">
+    <div class="slide-content" style="justify-content: flex-start; padding-top: 20px;">
+      <h2 class="slide-title">Pricing</h2>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-card-header"></div>
+          <div class="pricing-card-body">
+            <div class="card-title">AI Bot<br>(Website + Link in bio)</div>
+            <div class="price-main">$129/mo</div>
+            <div class="price-sub">$1,000 set up</div>
+            <p style="color:var(--gold); margin: 8px 0 2px; font-size:0.85rem;">+</p>
+            <div class="price-main">Service Fees:</div>
+            <div class="price-detail">
+              $200/hr creative, custom, integration<br>
+              $250/hr video
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check-icon">&#10004;</span> Website & Link in bio</li>
+              <li><span class="check-icon">&#10004;</span> AI sommelier agent</li>
+            </ul>
+            <div class="pricing-btn-area">
+              <a href="https://link.fig1.ai/bardog2" target="_blank" class="pricing-example-link">View Example &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header"></div>
+          <div class="pricing-card-body">
+            <div class="card-title">Drink Agents</div>
+            <div class="price-main">Campaign Based Pricing</div>
+            <div class="price-detail" style="margin-top:8px;">
+              Up to 50k clicks = $0.15 per click<br>
+              50k-100k clicks = $0.12 per click<br>
+              100k+ clicks = $0.10 per click
+            </div>
+            <div class="price-main">Drink Agents Branded Campaigns</div>
+            <div class="price-sub">Cost+20%</div>
+            <div style="height: 16px;"></div>
+            <ul class="pricing-features two-col">
+              <li><span class="check-icon">&#10004;</span> Bar Dog page on Drink Agents</li>
+              <li><span class="check-icon">&#10004;</span> Campaign analytics</li>
+              <li><span class="check-icon">&#10004;</span> Organic discovery from visitors</li>
+              <li><span class="check-icon">&#10004;</span> Ongoing platform hosting</li>
+            </ul>
+            <div class="pricing-btn-area">
+              <a href="https://drinkagents.com/experience/bar-dog" target="_blank" class="pricing-example-link">View Example: Bar Dog &rarr;</a>
+              <a href="https://drinkagents.com/experience/foley" target="_blank" class="pricing-example-link">View Example: Foley &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>&nbsp;</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 11: VIDEO / CONTENT CREATION ═══════ -->
+  <div class="slide">
+    <div class="slide-content" style="justify-content: flex-start; padding-top: 20px;">
+      <h2 class="slide-title">Video / Content<br>Creation</h2>
+
+      <div class="video-layout">
+        <div class="video-pricing-card">
+          <div class="card-top"></div>
+          <div class="card-inner">
+            <h3>Additional Video<br>& Customization</h3>
+            <div class="pricing-divider" style="margin:12px auto;"></div>
+            <div class="price-main">$250/hr</div>
+            <ul class="pricing-features" style="margin-top: 18px;">
+              <li><span class="check-icon">&#10004;</span> New AI-generated videos</li>
+              <li><span class="check-icon">&#10004;</span> Social-optimized video edits</li>
+              <li><span class="check-icon">&#10004;</span> Custom campaign content</li>
+              <li><span class="check-icon">&#10004;</span> Branded partnership posts</li>
+              <li><span class="check-icon">&#10004;</span> Ongoing creative updates</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="video-images">
+          <div class="video-img-row">
+            <video autoplay loop muted playsinline controls style="width:100%;border-radius:8px;display:block;">
+              <source src="images/video2.mp4" type="video/mp4">
+            </video>
+            <div class="hours-badge">
+              <strong>Hours to build</strong>
+              <span>1.5 hrs</span>
+            </div>
+          </div>
+          <div class="video-img-row">
+            <video autoplay loop muted playsinline controls style="width:100%;border-radius:8px;display:block;">
+              <source src="images/video1.mp4" type="video/mp4">
+            </video>
+            <div class="hours-badge">
+              <strong>Hours to build</strong>
+              <span>3 hrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>&nbsp;</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SLIDE 12: CTA ═══════ -->
+  <div class="slide has-top-bar cta-slide" id="contact">
+    <div class="cta-paw p1"><img src="images/image-1-1-8.png" alt=""></div>
+    <div class="cta-paw p2"><img src="images/image-5-1-23.png" alt=""></div>
+    <div class="cta-paw p3"><img src="images/image-5-1-23.png" alt=""></div>
+    <div class="cta-paw p4"><img src="images/image-1-1-8.png" alt=""></div>
+    <div class="slide-content">
+      <h2>Let's Bring Bar Dog to Life.</h2>
+      <p class="cta-body">From an interactive Link In Bio experience to social media campaigns, website chat, and Drink Agents — we're ready to make Bar Dog your customers' favorite personal sommelier.</p>
+      <div class="cta-divider"></div>
+      <div class="cta-links">fig1.ai &nbsp;|&nbsp; drinkagents.com</div>
+      <div class="cta-emails" style="margin-top:18px; font-family:'Inter',sans-serif; font-size:0.95rem; color:var(--navy);">
+        <a href="mailto:sales@fig1.ai" style="color:var(--gold); text-decoration:none; font-weight:600;">sales@fig1.ai</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="mailto:jim@fig1.ai" style="color:var(--gold); text-decoration:none; font-weight:600;">jim@fig1.ai</a>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <p>&nbsp;</p>
+    </div>
+  </div>
+
+  <script>
+    // Scroll spy: highlight active nav link
+    const sections = document.querySelectorAll('.slide[id]');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+</body>
+</html>
